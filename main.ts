@@ -142,6 +142,7 @@ let y: Sprite = null
 let c: Sprite = null
 let g: Sprite = null
 let red: Sprite = null
+let mySprite: Sprite = null
 let mySprite2: Sprite = null
 let mySprite3: Sprite = null
 let background = false
@@ -1427,24 +1428,45 @@ if (background) {
         `, SpriteKind.Player)
     doSomething()
 }
-let mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . 2 2 2 . . . . . . . . 
-    . . . . . 2 2 2 . . . . . . . . 
-    . . . . . 2 2 2 . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+if (background) {
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f . . . . . . . 
+        . . . . . . f f f . . . . . . . 
+        . . . . . . f f f . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+} else {
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 1 1 1 . . . . . . . 
+        . . . . . . 1 1 1 . . . . . . . 
+        . . . . . . 1 1 1 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+}
 forever(function () {
     if (controller.up.isPressed()) {
         mySprite.setVelocity(0, -40)
@@ -1482,6 +1504,123 @@ forever(function () {
     }
     if (mySprite.overlapsWith(m)) {
         player_c = 5
+    }
+})
+forever(function () {
+    if (player_c == 1) {
+        if (controller.player2.isPressed(ControllerButton.Up)) {
+            mySprite4 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 2 2 2 . . . . . . . 
+                . . . . . . 2 2 2 . . . . . . . 
+                . . . . . . 2 2 2 . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Projectile)
+            mySprite4.setPosition(mySprite.x, mySprite.y)
+        }
+    }
+    if (player_c == 2) {
+        if (controller.player2.isPressed(ControllerButton.Up)) {
+            mySprite4 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 7 7 7 . . . . . . . 
+                . . . . . . 7 7 7 . . . . . . . 
+                . . . . . . 7 7 7 . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Projectile)
+            mySprite4.setPosition(mySprite.x, mySprite.y)
+        }
+    }
+    if (player_c == 3) {
+        if (controller.player2.isPressed(ControllerButton.Up)) {
+            mySprite4 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 8 8 8 . . . . . . . 
+                . . . . . . 8 8 8 . . . . . . . 
+                . . . . . . 8 8 8 . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Projectile)
+            mySprite4.setPosition(mySprite.x, mySprite.y)
+        }
+    }
+    if (player_c == 4) {
+        if (controller.player2.isPressed(ControllerButton.Up)) {
+            mySprite4 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 5 5 5 . . . . . . . 
+                . . . . . . 5 5 5 . . . . . . . 
+                . . . . . . 5 5 5 . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Projectile)
+            mySprite4.setPosition(mySprite.x, mySprite.y)
+        }
+    }
+    if (player_c == 5) {
+        if (controller.player2.isPressed(ControllerButton.Up)) {
+            mySprite4 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . a a a . . . . . . . 
+                . . . . . . a a a . . . . . . . 
+                . . . . . . a a a . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Projectile)
+            mySprite4.setPosition(mySprite.x, mySprite.y)
+        }
     }
 })
 forever(function () {
@@ -1594,28 +1733,5 @@ forever(function () {
                 . . . . . . . . . . . . . . . . 
                 `, SpriteKind.Player)
         }
-    }
-})
-forever(function () {
-    if (controller.player2.isPressed(ControllerButton.Up)) {
-        mySprite4 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . a a a . . . . . . . 
-            . . . . . . a a a . . . . . . . 
-            . . . . . . a a a . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Projectile)
-        mySprite4.setPosition(mySprite.x, mySprite.y)
     }
 })
