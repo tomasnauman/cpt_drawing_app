@@ -135,6 +135,7 @@ function doSomething () {
         `, SpriteKind.Food)
     m.setPosition(12, 108)
 }
+let mySprite4: Sprite = null
 let player_c = 0
 let m: Sprite = null
 let y: Sprite = null
@@ -1484,6 +1485,9 @@ forever(function () {
     }
 })
 forever(function () {
+    mySprite.setStayInScreen(true)
+})
+forever(function () {
     if (controller.A.isPressed()) {
         if (player_c == 1) {
             mySprite.destroy()
@@ -1593,5 +1597,25 @@ forever(function () {
     }
 })
 forever(function () {
-    mySprite.setStayInScreen(true)
+    if (controller.player2.isPressed(ControllerButton.Up)) {
+        mySprite4 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . a a a . . . . . . . 
+            . . . . . . a a a . . . . . . . 
+            . . . . . . a a a . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Projectile)
+        mySprite4.setPosition(mySprite.x, mySprite.y)
+    }
 })
